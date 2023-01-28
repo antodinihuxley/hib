@@ -1,0 +1,31 @@
+<div id="enrollments" role="tablist" class="accordion" *ngIf="!showAddList">
+  <div class="accordion-item" *ngFor="let field of fieldsArr; let i = index">
+    <div [attr.id]="'accordion_' + i" class="accordion-header" role="tab">
+      <button
+        type="button"
+        role="tab"
+        data-bs-toggle="collapse"
+        [attr.data-bs-target]="'#collapseOne_' + i"
+        aria-expanded="false"
+        class="accordion-button collapsed"
+        style="display: inline-block"
+        [attr.aria-controls]="'collapseOne_' + i"
+      >
+        <h6>
+          {{ field.id }} | {{ field.desc }}
+          <span *ngIf="field.enrollment" class="enrolled float-end"
+            >Enrolled</span
+          >
+        </h6>
+      </button>
+    </div>
+    <div
+      class="collapse accordion-collapse"
+      [attr.aria-labelledby]="'accordion_' + i"
+      data-bs-parent="#enrollments"
+      [attr.id]="'collapseOne_' + i"
+    >
+      <app-enrollment-detail [fields]="field"> </app-enrollment-detail>
+    </div>
+  </div>
+</div>

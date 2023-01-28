@@ -1,0 +1,89 @@
+<div class="container">
+  <div style="margin-top: 4px" class="row">
+    <div class="col-9">
+      <div *ngFor="let subField of fields.subFields">
+        <p>{{ subField.name }}</p>
+        <p id="data">{{ subField.data }}</p>
+      </div>
+    </div>
+    <div class="col-3">
+      <div class="float-end">
+        <button
+          type="button"
+          class="btn btn-info btn-sm"
+          style="margin-bottom: 6px; margin-right: 10px"
+          data-bs-toggle="modal"
+          data-bs-target="#staticBackdrop"
+          (click)="onSelectModal()"
+        >
+          Info
+        </button>
+        <button
+          type="button"
+          class="btn btn-primary btn-sm"
+          style="margin-bottom: 6px; margin-right: 10px"
+        >
+          Update
+        </button>
+        <!-- Modal -->
+        <div
+          class="modal fade"
+          id="staticBackdrop"
+          tabindex="-1"
+          data-bs-backdrop="static"
+          data-bs-keyboard="false"
+          aria-hidden="true"
+          aria-labelledby="staticBackdropLabel"
+        >
+          <div
+            class="modal-dialog modal-dialog-centered modal-dialog-scrollable"
+          >
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">
+                  {{ fields.name }}
+                </h5>
+                <button
+                  type="button"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                  class="btn-close"
+                ></button>
+              </div>
+              <div class="modal-body">
+                <p>hi</p>
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">Name</th>
+                      <th scope="col">Detail</th>
+                      <th scope="col">Valid Values</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let subField of subFieldsArr">
+                      <td scope="row">{{ subField.id }}</td>
+                      <td>{{ subField.name }}</td>
+                      <td>{{ subField.detail }}</td>
+                      <td>{{ subField.value }}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  data-bs-dismiss="modal"
+                  class="btn btn-secondary"
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
